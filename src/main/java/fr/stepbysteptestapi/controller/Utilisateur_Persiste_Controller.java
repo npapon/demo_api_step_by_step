@@ -44,17 +44,16 @@ public class Utilisateur_Persiste_Controller {
 	}
 
 	@PutMapping("/utilisateur/{id_utilisateur_a_updater}")
-
-	public Utilisateur_Persiste updateEmployee(
+	public Utilisateur_Persiste updateUtilisateur(
 			@PathVariable("id_utilisateur_a_updater") final Long id_utilisateur_a_updater,
 			@RequestBody Utilisateur_Persiste utilisateurAvecLesMisesAJour) {
-
+//on récupère l'utilisateur de l'url
 		Optional<Utilisateur_Persiste> optionalUtilisateurDuEndPoint = utilisateur_Persiste_Service
 				.getUtilisateur(id_utilisateur_a_updater);
 
 		if (optionalUtilisateurDuEndPoint.isPresent()) {
 			Utilisateur_Persiste utilisateurEndPoint = optionalUtilisateurDuEndPoint.get();
-
+//et on met à jour ses infos avec l'utilisateur du body
 			String loginAMettreAJour = utilisateurAvecLesMisesAJour.getLogin();
 			if (loginAMettreAJour != null) {
 				utilisateurEndPoint.setLogin(loginAMettreAJour);
