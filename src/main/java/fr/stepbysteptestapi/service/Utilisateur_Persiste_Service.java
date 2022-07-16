@@ -34,4 +34,10 @@ public class Utilisateur_Persiste_Service {
 
 	}
 
+	public Optional<Utilisateur_Persiste> findByLoginAndMotDePasse(String login, String motDePasse) {
+
+		return utilisateur_Persiste_Repository.findByLoginAndMotDePasse(login, motDePasse);
+
+	}
+
 }

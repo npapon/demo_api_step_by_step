@@ -8,5 +8,4 @@ import fr.stepbysteptestapi.model.Connexion_Utilisateur_Persiste;
 @Repository
 public interface Connexion_Utilisateur_Persiste_Repository
 		extends CrudRepository<Connexion_Utilisateur_Persiste, Long> {
-
 }
