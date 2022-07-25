@@ -29,14 +29,27 @@ public class Utilisateur_Persiste_Service {
 	}
 
 	public Utilisateur_Persiste saveUtilisateur(Utilisateur_Persiste utilisateur_persiste) {
-		utilisateur_Persiste_Repository.save(utilisateur_persiste);
-		return utilisateur_persiste;
+
+		Optional<Utilisateur_Persiste> optionalUtilisateur = this.findByLogin(utilisateur_persiste.getLogin());
+
+		if (!optionalUtilisateur.isPresent()) {
+			utilisateur_Persiste_Repository.save(utilisateur_persiste);
+			return utilisateur_persiste;
+		} else {
+			return null;
+		}
 
 	}
 
 	public Optional<Utilisateur_Persiste> findByLoginAndMotDePasse(String login, String motDePasse) {
 
 		return utilisateur_Persiste_Repository.findByLoginAndMotDePasse(login, motDePasse);
+
+	}
+
+	public Optional<Utilisateur_Persiste> findByLogin(String login) {
+
+		return utilisateur_Persiste_Repository.findByLogin(login);
 
 	}
 

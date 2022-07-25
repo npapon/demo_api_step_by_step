@@ -12,4 +12,6 @@ public interface Utilisateur_Persiste_Repository extends CrudRepository<Utilisat
 
 	Optional<Utilisateur_Persiste> findByLoginAndMotDePasse(String login, String motDePasse);
 
+	Optional<Utilisateur_Persiste> findByLogin(String login);
+
 }

@@ -100,6 +100,18 @@ public class Utilisateur_Persiste_Controller {
 
 	}
 
+	@GetMapping("/controlelogin")
+	public Utilisateur_Persiste getUtilisateurByLogin(@RequestParam(name = "login") String login) {
+
+		Optional<Utilisateur_Persiste> optionalUtilisateur = utilisateur_Persiste_Service.findByLogin(login);
+		if (optionalUtilisateur.isPresent()) {
+			return optionalUtilisateur.get();
+		} else {
+			return null;
+		}
+
+	}
+
 	@GetMapping("/utilisateuravecreponsepersonnalisee/{id_utilisateur}")
 	public ResponseEntity getUtilisateurAvecReponsePersonnalisee(
 			@PathVariable("id_utilisateur") final Long id_utilisateur) {
